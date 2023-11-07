@@ -1,0 +1,321 @@
+i'm using react-native-switch-selector in expo react native and i'm successed to make it but the problem now is a radius of switch is too high and i don't see where there is option to minimize the radius of the switch selector i mean border radius, so pass through my codes and show me how to set the border radius of the switch selector in expo react native; below are my codes;
+
+{/*--------ADD MORE INFORMATIONS WHEN MAKING AN ORDER-------------*/}
+
+
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisibleMakeOrder}
+        onRequestClose={() => setModalVisibleMakeOrder(false)}
+      >
+      <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+   <ScrollView>
+  
+  <View style={styles.swapButtonsheader}>
+
+  <Text style={{
+    color:'#f9484a',
+    textAlign:'center',
+    fontFamily:'Medium'
+  }}>Select Customer Type</Text>
+    
+ 
+
+
+
+
+
+{/*mwanzo wa swapButtonsContainer*/}
+
+ <View style={styles.swapButtonsContainer}>
+
+  <View style={styles.swapButtonsInnerContainer}>
+   <SwitchSelector 
+   initial={0}
+   textColor={'#FFF'}
+   selectedColor={'#494a4d'}
+   fontSize={14}
+   //bold
+   backgroundColor={'#0f0'}
+   buttonColor={'#FFF'}
+   borderColor={'#72c8dc'}
+   height={45}
+   valuePadding={0}
+   hasPadding
+   onPress={value => setShowHide(value)}
+   options={[
+      { label: "Guest Customer", value: false },
+      { label: "Walking Customer", value: true },
+    ]}
+
+
+   />
+     
+  
+  </View>
+    
+  </View>
+
+
+{/*mwisho wa swapButtonsContainer*/}
+
+
+
+
+
+
+ <View style={styles.swapButtonsContentsContainer}>
+{ showhide !== true ? (
+
+
+  
+    <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
+          <View style={globalstyles.ModalView}>
+          
+            <View style={globalstyles.form}>
+
+
+
+{/*ADD NEW CUSTOMER IF CUSTOMER DOES NOT EXIST*/}
+
+     <View style={globalstyles.ButtonConatiner}>
+                  
+                    <TouchableOpacity 
+                    style={globalstyles.AddNewCustomer}  
+                    onPress={() => setModalVisibleAddNewCustomer(true)} >
+                        <Text 
+                        style={globalstyles.AddNewCustomerText}
+                        >ADD NEW CUSTOMER</Text>
+                    </TouchableOpacity>
+            </View>
+{/*MWISHO WA ADD NEW CUSTOMER IF CUSTOMER DOES NOT EXIST*/}
+
+     
+
+
+
+
+    
+ <View style={{ marginTop: 20 }}>
+        < View style={globalstyles.inputTax}>
+            <Text style={globalstyles.TaxType}>
+                 Customer
+            </Text>
+
+     <View style={globalstyles.picker}>     
+          <Picker
+           style={globalstyles.pickerInput}
+            selectedValue={selectedCustomer}
+            onValueChange={(itemValue, itemIndex) => setSelectedCustomer(itemValue)}
+          >
+
+            {customerClasses.map((customer) => (
+              <Picker.Item
+                key={customer.id}
+                label={customer.CustomerFullName}
+                value={customer.id}
+              />
+            ))}
+          </Picker>
+
+         </View>    
+    </View>
+    </View>
+
+
+
+
+        
+
+
+ <View style={{ marginTop: 20 }}>
+        < View style={globalstyles.inputTax}>
+            <Text style={globalstyles.TaxType}>
+                 Table
+            </Text>
+
+     <View style={globalstyles.picker}>     
+          <Picker
+           style={globalstyles.pickerInput}
+            selectedValue={selectedTable}
+            onValueChange={(itemValue, itemIndex) => setSelectedTable(itemValue)}
+          >
+
+            {tableClasses.map((table) => (
+              <Picker.Item
+                key={table.id}
+                label={table.TableNumber}
+                value={table.id}
+              />
+            ))}
+          </Picker>
+
+         </View>    
+    </View>
+    </View>
+
+
+
+
+
+
+  <View style={{ marginTop: 20 }}>
+        < View style={globalstyles.inputTax}>
+            <Text style={globalstyles.TaxType}>
+                 Room
+            </Text>
+
+     <View style={globalstyles.picker}>     
+          <Picker
+           style={globalstyles.pickerInput}
+            selectedValue={selectedRoom}
+            onValueChange={(itemValue, itemIndex) => setSelectedRoom(itemValue)}
+          >
+
+            {myrooms.map((x) => (
+              <Picker.Item
+                key={x.id}
+                label={x.RoomName}
+                value={x.id}
+              />
+            ))}
+          </Picker>
+
+         </View>    
+    </View>
+    </View>
+
+
+
+
+               
+
+                <View  style={{ marginTop:20 }}>
+                   
+             
+                </View>
+
+
+            </View>
+
+          
+            
+
+            <View style={globalstyles.ButtonConatiner}>
+                    <TouchableOpacity style={globalstyles.ButtonClose}  
+                    onPress={() => setModalVisibleMakeOrder(false)} >
+                        <Text style={globalstyles.ConfirmCancelButtonText}>CLOSE</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                    style={globalstyles.ButtonAdd}  
+                    onPress={makeOrderForGuestCustomer} >
+                        <Text style={globalstyles.ConfirmCancelButtonText}>CONFIRM</Text>
+                    </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+
+
+
+
+
+
+
+
+
+):(
+   
+
+
+
+
+
+
+
+
+
+  <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
+          <View style={globalstyles.ModalView}>
+          
+            <View style={globalstyles.form}>
+
+
+ <View style={{ marginTop: 20 }}>
+        < View style={globalstyles.inputTax}>
+            <Text style={globalstyles.TaxType}>
+                 Table
+            </Text>
+
+     <View style={globalstyles.picker}>     
+          <Picker
+           style={globalstyles.pickerInput}
+            selectedValue={selectedTable}
+            onValueChange={(itemValue, itemIndex) => setSelectedTable(itemValue)}
+          >
+
+            {tableClasses.map((table) => (
+              <Picker.Item
+                key={table.id}
+                label={table.TableNumber}
+                value={table.id}
+              />
+            ))}
+          </Picker>
+
+         </View>    
+    </View>
+    </View>
+
+               
+
+                <View  style={{ marginTop:20 }}>
+                   
+             
+                </View>
+
+
+            </View>
+
+          
+            
+
+            <View style={globalstyles.ButtonConatiner}>
+                    <TouchableOpacity style={globalstyles.ButtonClose}  
+                    onPress={() => setModalVisibleMakeOrder(false)} >
+                        <Text style={globalstyles.ConfirmCancelButtonText}>CLOSE</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                    style={globalstyles.ButtonAdd}  
+                    onPress={makeOrder} >
+                        <Text style={globalstyles.ConfirmCancelButtonText}>CONFIRM</Text>
+                    </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+
+
+
+
+
+
+
+
+)}
+ </View>
+
+
+
+
+
+ </View>
+</ScrollView>
+
+        
+        </KeyboardAvoidingView>
+      </Modal>
